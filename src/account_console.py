@@ -1,3 +1,3 @@
 class AccountConsole:
     def print_header(self):
-        pass
+        print("Date||Amount||Balance")

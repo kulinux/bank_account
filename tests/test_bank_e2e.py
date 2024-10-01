@@ -23,5 +23,4 @@ def test_print_table_header(capsys):
     bank_account.print_statement()
 
     captured = capsys.readouterr()
-    print(captured.out)
     assert captured.out == "Date||Amount||Balance\n"

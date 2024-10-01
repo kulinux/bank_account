@@ -11,7 +11,6 @@ class BankAccount:
 
     def print_statement(self):
         self.console.print_header()
-        # print("Date||Amount||Balance")
 
 
 class WrongAmountException(Exception):
