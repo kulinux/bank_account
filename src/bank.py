@@ -1,11 +1,17 @@
+from account_console import AccountConsole
+
+
 class BankAccount:
-    def deposit(self, money):
+    def __init__(self, console: AccountConsole) -> None:
+        self.console = console
+
+    def deposit(self, money: float):
         if money < 0:
             raise WrongAmountException()
-        print("foo " + str(money))
 
     def print_statement(self):
-        print("Date||Amount||Balance")
+        self.console.print_header()
+        # print("Date||Amount||Balance")
 
 
 class WrongAmountException(Exception):
