@@ -26,9 +26,9 @@ def test_deposit():
 @freeze_time("2012-01-14")
 def test_withdraw():
     console = Mock()
-    bank_account = BankAccount(console, 3000)
-    bank_account.withdraw(500)
+    bank_account = BankAccount(console)
+    bank_account.withdraw(2500)
 
     bank_account.print_statement()
 
-    console.print_line.assert_called_with("2012-01-14", -500, 2500)
+    console.print_line.assert_called_with("2012-01-14", -2500, -2500)
