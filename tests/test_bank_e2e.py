@@ -4,8 +4,8 @@ from freezegun import freeze_time
 import pytest
 
 
-def bank() -> BankAccount:
-    return BankAccount(AccountConsole())
+def bank(initial: int = 0) -> BankAccount:
+    return BankAccount(AccountConsole(), initial)
 
 
 def test_negative():
@@ -35,3 +35,13 @@ def test_deposit(capsys):
 
     captured = capsys.readouterr()
     assert captured.out == "Date||Amount||Balance\n" "2012-01-14||2500||2500\n"
+
+
+@freeze_time("2012-01-14")
+def test_withdraw(capsys):
+    bank_account = bank(3000)
+    bank_account.withdraw(500)
+    bank_account.print_statement()
+
+    captured = capsys.readouterr()
+    assert captured.out == "Date||Amount||Balance\n" "2012-01-14||-500||2500\n"
